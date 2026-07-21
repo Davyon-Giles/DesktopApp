@@ -8,7 +8,7 @@ namespace ImageViewer
 {
     public class ImageService
     {
-        public List<ImageRecord> LoadImages(string folder)
+     /*   public List<ImageRecord> LoadImages(string folder)
         {
             List<ImageRecord> images = new();
 
@@ -28,7 +28,7 @@ namespace ImageViewer
             }
 
             return images;
-        }
+        }*/
 
         }
 }

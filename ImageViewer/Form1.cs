@@ -11,7 +11,8 @@ namespace ImageViewer
 
         private int currentIndex = 0;
 
-        private readonly ImageService imageService = new();
+        //private readonly ImageService imageService = new();
+        private readonly DatabaseService databaseService = new();
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -53,31 +54,63 @@ namespace ImageViewer
         }
         private void ShowImage()
         {
-            if (images.Count == 0)
-                return;
-
             ImageRecord image = images[currentIndex];
 
-            pictureBoxImage.Image = Image.FromFile(image.ImagePath);
+            namelbl.Text = image.ImageName;
+            locationlbl.Text = image.SubFolderPath;
+            lblPageCount.Text = $"{currentIndex + 1} of {images.Count}";
 
-            namelbl.Text = image.Name;
+            if (File.Exists(image.ImagePath))
+            {
+                /*  if (pictureBoxImage.Image != null)
+                  {
+                      pictureBoxImage.Image.Dispose();
+                      pictureBoxImage.Image = null;
+                  }
 
-            locationlbl.Text = image.Location;
+                  pictureBoxImage.Image = Image.FromFile(image.ImagePath);
+              }
+              else
+              {
+                  pictureBoxImage.Image = null;
+              }*/
 
-            lblPageCount.Text =
-                $"{currentIndex + 1} of {images.Count}";
+                try
+                {
+                    if (pictureBoxImage.Image != null)
+                    {
+                        pictureBoxImage.Image.Dispose();
+                        pictureBoxImage.Image = null;
+                    }
 
-            btnPrevious.Enabled = currentIndex > 0;
+                    pictureBoxImage.Image = Image.FromFile(image.ImagePath);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(
+                        $"Unable to load image:\n\n{image.ImagePath}\n\n{ex.Message}",
+                        "Image Load Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
 
-            btnNext.Enabled =
-                currentIndex < images.Count - 1;
+                    pictureBoxImage.Image = null;
+                }
+            }
+
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            images = imageService.LoadImages(@"C:\my-images");
+            // images = imageService.LoadImages(@"C:\my-images");
 
-            ShowImage();
+            //ShowImage();
+
+            images = databaseService.GetImages();
+
+            if (images.Count > 0)
+            {
+                ShowImage();
+            }
         }
 
 

@@ -8,12 +8,16 @@ namespace ImageViewer
 {
     public class ImageRecord
     {
-        public int Id { get; set; }
+        public int ImgId { get; set; }
 
-        public string Name { get; set; } = "";
+        public string ImageId { get; set; } = "";
 
-        public string Location { get; set; } = "";
+        public string ImageName { get; set; } = "";
 
         public string ImagePath { get; set; } = "";
+
+        public string ImageFile { get; set; } = "";
+
+        public string SubFolderPath { get; set; } = "";
     }
 }
