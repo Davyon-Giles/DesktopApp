@@ -54,58 +54,117 @@ namespace ImageViewer
         }
         private void ShowImage()
         {
+            if (images.Count == 0)
+                return;
+
             ImageRecord image = images[currentIndex];
 
+            // Update footer information
             namelbl.Text = image.ImageName;
             locationlbl.Text = image.SubFolderPath;
             lblPageCount.Text = $"{currentIndex + 1} of {images.Count}";
 
-            if (File.Exists(image.ImagePath))
+            // Check if the file exists
+            if (!File.Exists(image.ImagePath))
             {
-                /*  if (pictureBoxImage.Image != null)
-                  {
-                      pictureBoxImage.Image.Dispose();
-                      pictureBoxImage.Image = null;
-                  }
+                pictureBoxImage.Image = null;
 
-                  pictureBoxImage.Image = Image.FromFile(image.ImagePath);
-              }
-              else
-              {
-                  pictureBoxImage.Image = null;
-              }*/
+                MessageBox.Show(
+                    $"File not found:\n\n{image.ImagePath}",
+                    "Missing File",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
 
-                try
-                {
-                    if (pictureBoxImage.Image != null)
+                return;
+            }
+
+            // Determine the file type
+            string extension = Path.GetExtension(image.ImagePath).ToLower();
+
+            switch (extension)
+            {
+                // Supported image formats
+                case ".jpg":
+                case ".jpeg":
+                case ".png":
+                case ".bmp":
+                case ".gif":
+                case ".tif":
+                case ".tiff":
+                    pictureBoxImage.Visible = true;
+                    webViewPdf.Visible = false;
+
+                    try
                     {
-                        pictureBoxImage.Image.Dispose();
+                        // Dispose of the previous image
+                        if (pictureBoxImage.Image != null)
+                        {
+                            pictureBoxImage.Image.Dispose();
+                            pictureBoxImage.Image = null;
+                        }
+
+                        pictureBoxImage.Image = Image.FromFile(image.ImagePath);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            $"Unable to load image:\n\n{image.ImagePath}\n\n{ex.Message}",
+                            "Image Load Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+
                         pictureBoxImage.Image = null;
                     }
 
-                    pictureBoxImage.Image = Image.FromFile(image.ImagePath);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(
-                        $"Unable to load image:\n\n{image.ImagePath}\n\n{ex.Message}",
-                        "Image Load Error",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                    break;
+
+                // PDF files
+                case ".pdf":
+
+                    pictureBoxImage.Visible = false;
+                    webViewPdf.Visible = true;
+
+                    webViewPdf.Source = new Uri(image.ImagePath);
+
+                    break;
+
+                // Unsupported file types
+                default:
 
                     pictureBoxImage.Image = null;
-                }
+
+                    MessageBox.Show(
+                        $"Unsupported file type:\n{extension}",
+                        "Unsupported File",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+
+                    break;
             }
 
+            // Enable/Disable navigation buttons
+            btnPrevious.Enabled = currentIndex > 0;
+            btnNext.Enabled = currentIndex < images.Count - 1;
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        /* private void MainForm_Load(object sender, EventArgs e)
+         {
+             // images = imageService.LoadImages(@"C:\my-images");
+
+             //ShowImage();
+
+             images = databaseService.GetImages();
+
+             if (images.Count > 0)
+             {
+                 ShowImage();
+             }
+         }*/
+        private async void MainForm_Load(object sender, EventArgs e)
         {
-            // images = imageService.LoadImages(@"C:\my-images");
-
-            //ShowImage();
-
             images = databaseService.GetImages();
+
+            await webViewPdf.EnsureCoreWebView2Async();
 
             if (images.Count > 0)
             {

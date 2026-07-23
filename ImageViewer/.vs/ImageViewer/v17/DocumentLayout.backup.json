@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Davyon.Giles\\Documents\\Web Development\\Web Dev projects\\DesktopApp\\ImageViewer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AD2F4C7F-B6B9-4083-A2B3-8FEF72221D99}|ImageViewer.csproj|c:\\users\\davyon.giles\\documents\\web development\\web dev projects\\desktopapp\\imageviewer\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AD2F4C7F-B6B9-4083-A2B3-8FEF72221D99}|ImageViewer.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{AD2F4C7F-B6B9-4083-A2B3-8FEF72221D99}|ImageViewer.csproj|C:\\Users\\Davyon.Giles\\Documents\\Web Development\\Web Dev projects\\DesktopApp\\ImageViewer\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{AD2F4C7F-B6B9-4083-A2B3-8FEF72221D99}|ImageViewer.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AD2F4C7F-B6B9-4083-A2B3-8FEF72221D99}|ImageViewer.csproj|c:\\users\\davyon.giles\\documents\\web development\\web dev projects\\desktopapp\\imageviewer\\imagerecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD2F4C7F-B6B9-4083-A2B3-8FEF72221D99}|ImageViewer.csproj|solutionrelative:imagerecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AD2F4C7F-B6B9-4083-A2B3-8FEF72221D99}|ImageViewer.csproj|c:\\users\\davyon.giles\\documents\\web development\\web dev projects\\desktopapp\\imageviewer\\databaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,8 +19,8 @@
       "RelativeMoniker": "D:0:0:{AD2F4C7F-B6B9-4083-A2B3-8FEF72221D99}|ImageViewer.csproj|solutionrelative:imageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AD2F4C7F-B6B9-4083-A2B3-8FEF72221D99}|ImageViewer.csproj|c:\\users\\davyon.giles\\documents\\web development\\web dev projects\\desktopapp\\imageviewer\\imagerecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AD2F4C7F-B6B9-4083-A2B3-8FEF72221D99}|ImageViewer.csproj|solutionrelative:imagerecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AD2F4C7F-B6B9-4083-A2B3-8FEF72221D99}|ImageViewer.csproj|c:\\users\\davyon.giles\\documents\\web development\\web dev projects\\desktopapp\\imageviewer\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD2F4C7F-B6B9-4083-A2B3-8FEF72221D99}|ImageViewer.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,7 +46,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "ImageRecord.cs",
               "DocumentMoniker": "C:\\Users\\Davyon.Giles\\Documents\\Web Development\\Web Dev projects\\DesktopApp\\ImageViewer\\ImageRecord.cs",
               "RelativeDocumentMoniker": "ImageRecord.cs",
@@ -65,7 +65,7 @@
               "RelativeDocumentMoniker": "DatabaseService.cs",
               "ToolTip": "C:\\Users\\Davyon.Giles\\Documents\\Web Development\\Web Dev projects\\DesktopApp\\ImageViewer\\DatabaseService.cs",
               "RelativeToolTip": "DatabaseService.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAgwDUAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-21T16:24:58.617Z",
               "EditorCaption": ""
@@ -85,25 +85,25 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\Davyon.Giles\\Documents\\Web Development\\Web Dev projects\\DesktopApp\\ImageViewer\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\Davyon.Giles\\Documents\\Web Development\\Web Dev projects\\DesktopApp\\ImageViewer\\Form1.cs",
-              "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAiwGAAAAARAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Davyon.Giles\\Documents\\Web Development\\Web Dev projects\\DesktopApp\\ImageViewer\\Form1.cs*",
+              "RelativeToolTip": "Form1.cs*",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAYwFcAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-16T17:36:55.386Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Davyon.Giles\\Documents\\Web Development\\Web Dev projects\\DesktopApp\\ImageViewer\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\Davyon.Giles\\Documents\\Web Development\\Web Dev projects\\DesktopApp\\ImageViewer\\Form1.cs [Design]",
-              "RelativeToolTip": "Form1.cs [Design]",
+              "ToolTip": "C:\\Users\\Davyon.Giles\\Documents\\Web Development\\Web Dev projects\\DesktopApp\\ImageViewer\\Form1.cs [Design]*",
+              "RelativeToolTip": "Form1.cs [Design]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-16T12:47:36.78Z",
               "EditorCaption": " [Design]"

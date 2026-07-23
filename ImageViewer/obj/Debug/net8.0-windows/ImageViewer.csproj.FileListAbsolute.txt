@@ -76,3 +76,12 @@ C:\Users\Davyon.Giles\Documents\Web Development\Web Dev projects\DesktopApp\Imag
 C:\Users\Davyon.Giles\Documents\Web Development\Web Dev projects\DesktopApp\ImageViewer\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\Davyon.Giles\Documents\Web Development\Web Dev projects\DesktopApp\ImageViewer\obj\Debug\net8.0-windows\ImageViewer.csproj.AssemblyReference.cache
 C:\Users\Davyon.Giles\Documents\Web Development\Web Dev projects\DesktopApp\ImageViewer\obj\Debug\net8.0-windows\ImageVie.3E398B39.Up2Date
+C:\Users\Davyon.Giles\Documents\Web Development\Web Dev projects\DesktopApp\ImageViewer\bin\Debug\net8.0-windows\runtimes\win-x86\native\WebView2Loader.dll
+C:\Users\Davyon.Giles\Documents\Web Development\Web Dev projects\DesktopApp\ImageViewer\bin\Debug\net8.0-windows\runtimes\win-x64\native\WebView2Loader.dll
+C:\Users\Davyon.Giles\Documents\Web Development\Web Dev projects\DesktopApp\ImageViewer\bin\Debug\net8.0-windows\runtimes\win-arm64\native\WebView2Loader.dll
+C:\Users\Davyon.Giles\Documents\Web Development\Web Dev projects\DesktopApp\ImageViewer\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.Core.dll
+C:\Users\Davyon.Giles\Documents\Web Development\Web Dev projects\DesktopApp\ImageViewer\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.WinForms.dll
+C:\Users\Davyon.Giles\Documents\Web Development\Web Dev projects\DesktopApp\ImageViewer\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.Wpf.dll
+C:\Users\Davyon.Giles\Documents\Web Development\Web Dev projects\DesktopApp\ImageViewer\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.Core.xml
+C:\Users\Davyon.Giles\Documents\Web Development\Web Dev projects\DesktopApp\ImageViewer\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.WinForms.xml
+C:\Users\Davyon.Giles\Documents\Web Development\Web Dev projects\DesktopApp\ImageViewer\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.Wpf.xml

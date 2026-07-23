@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             lblTitle = new Label();
             btnPrevious = new Button();
             btnNext = new Button();
@@ -43,6 +44,7 @@
             lblname = new Label();
             pictureBoxImage = new PictureBox();
             pnlViewer = new Panel();
+            webViewPdf = new Microsoft.Web.WebView2.WinForms.WebView2();
             pnlNav = new Panel();
             tableLayoutPanel2 = new TableLayoutPanel();
             pnlTitle.SuspendLayout();
@@ -50,6 +52,7 @@
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxImage).BeginInit();
             pnlViewer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)webViewPdf).BeginInit();
             pnlNav.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
@@ -75,7 +78,7 @@
             btnPrevious.ForeColor = Color.LightYellow;
             btnPrevious.Location = new Point(3, 3);
             btnPrevious.Name = "btnPrevious";
-            btnPrevious.Size = new Size(268, 95);
+            btnPrevious.Size = new Size(308, 95);
             btnPrevious.TabIndex = 3;
             btnPrevious.Text = "◀ Previous ";
             btnPrevious.UseVisualStyleBackColor = false;
@@ -87,9 +90,9 @@
             btnNext.BackColor = Color.Teal;
             btnNext.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnNext.ForeColor = Color.LightYellow;
-            btnNext.Location = new Point(551, 3);
+            btnNext.Location = new Point(631, 3);
             btnNext.Name = "btnNext";
-            btnNext.Size = new Size(269, 95);
+            btnNext.Size = new Size(309, 95);
             btnNext.TabIndex = 4;
             btnNext.Text = " Next ▶";
             btnNext.UseVisualStyleBackColor = false;
@@ -102,9 +105,9 @@
             lblPageCount.BackColor = Color.Transparent;
             lblPageCount.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblPageCount.ForeColor = Color.Cyan;
-            lblPageCount.Location = new Point(277, 0);
+            lblPageCount.Location = new Point(317, 0);
             lblPageCount.Name = "lblPageCount";
-            lblPageCount.Size = new Size(268, 101);
+            lblPageCount.Size = new Size(308, 101);
             lblPageCount.TabIndex = 5;
             lblPageCount.Text = "N OF M";
             lblPageCount.TextAlign = ContentAlignment.MiddleCenter;
@@ -117,7 +120,7 @@
             pnlTitle.Dock = DockStyle.Top;
             pnlTitle.Location = new Point(0, 0);
             pnlTitle.Name = "pnlTitle";
-            pnlTitle.Size = new Size(823, 70);
+            pnlTitle.Size = new Size(943, 70);
             pnlTitle.TabIndex = 7;
             // 
             // pnlInfo
@@ -127,7 +130,7 @@
             pnlInfo.Dock = DockStyle.Bottom;
             pnlInfo.Location = new Point(0, 515);
             pnlInfo.Name = "pnlInfo";
-            pnlInfo.Size = new Size(823, 100);
+            pnlInfo.Size = new Size(943, 100);
             pnlInfo.TabIndex = 8;
             // 
             // tableLayoutPanel1
@@ -148,14 +151,14 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.Size = new Size(823, 100);
+            tableLayoutPanel1.Size = new Size(943, 100);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // numlbl
             // 
             numlbl.AutoSize = true;
             numlbl.Font = new Font("Segoe UI", 13F);
-            numlbl.Location = new Point(291, 66);
+            numlbl.Location = new Point(333, 66);
             numlbl.Name = "numlbl";
             numlbl.Size = new Size(68, 25);
             numlbl.TabIndex = 5;
@@ -176,7 +179,7 @@
             // 
             locationlbl.AutoSize = true;
             locationlbl.Font = new Font("Segoe UI", 13F);
-            locationlbl.Location = new Point(291, 33);
+            locationlbl.Location = new Point(333, 33);
             locationlbl.Name = "locationlbl";
             locationlbl.Size = new Size(88, 25);
             locationlbl.TabIndex = 3;
@@ -186,7 +189,7 @@
             // 
             namelbl.AutoSize = true;
             namelbl.Font = new Font("Segoe UI", 13F);
-            namelbl.Location = new Point(291, 0);
+            namelbl.Location = new Point(333, 0);
             namelbl.Name = "namelbl";
             namelbl.Size = new Size(58, 25);
             namelbl.TabIndex = 1;
@@ -220,8 +223,8 @@
             pictureBoxImage.Anchor = AnchorStyles.None;
             pictureBoxImage.BackColor = Color.Black;
             pictureBoxImage.BorderStyle = BorderStyle.FixedSingle;
-            pictureBoxImage.Image = Properties.Resources.GBIDOFSIT__2;
-            pictureBoxImage.Location = new Point(123, 181);
+            pictureBoxImage.Image = (Image)resources.GetObject("pictureBoxImage.Image");
+            pictureBoxImage.Location = new Point(194, 176);
             pictureBoxImage.Name = "pictureBoxImage";
             pictureBoxImage.Size = new Size(556, 224);
             pictureBoxImage.SizeMode = PictureBoxSizeMode.Zoom;
@@ -233,14 +236,28 @@
             pnlViewer.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             pnlViewer.BackColor = Color.FromArgb(30, 59, 83);
             pnlViewer.BorderStyle = BorderStyle.FixedSingle;
+            pnlViewer.Controls.Add(webViewPdf);
             pnlViewer.Controls.Add(pictureBoxImage);
             pnlViewer.Dock = DockStyle.Fill;
             pnlViewer.Location = new Point(0, 0);
             pnlViewer.Margin = new Padding(10);
             pnlViewer.Name = "pnlViewer";
-            pnlViewer.Size = new Size(823, 515);
+            pnlViewer.Size = new Size(943, 515);
             pnlViewer.TabIndex = 9;
             pnlViewer.Paint += panel1_Paint;
+            // 
+            // webViewPdf
+            // 
+            webViewPdf.AllowExternalDrop = true;
+            webViewPdf.Anchor = AnchorStyles.None;
+            webViewPdf.CreationProperties = null;
+            webViewPdf.DefaultBackgroundColor = Color.White;
+            webViewPdf.Location = new Point(194, 176);
+            webViewPdf.Name = "webViewPdf";
+            webViewPdf.Size = new Size(556, 224);
+            webViewPdf.TabIndex = 1;
+            webViewPdf.Visible = false;
+            webViewPdf.ZoomFactor = 1D;
             // 
             // pnlNav
             // 
@@ -250,7 +267,7 @@
             pnlNav.Dock = DockStyle.Top;
             pnlNav.Location = new Point(0, 70);
             pnlNav.Name = "pnlNav";
-            pnlNav.Size = new Size(823, 101);
+            pnlNav.Size = new Size(943, 101);
             pnlNav.TabIndex = 10;
             // 
             // tableLayoutPanel2
@@ -268,7 +285,7 @@
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel2.Size = new Size(823, 101);
+            tableLayoutPanel2.Size = new Size(943, 101);
             tableLayoutPanel2.TabIndex = 6;
             // 
             // MainForm
@@ -276,7 +293,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(30, 59, 83);
-            ClientSize = new Size(823, 615);
+            ClientSize = new Size(943, 615);
             Controls.Add(pnlNav);
             Controls.Add(pnlTitle);
             Controls.Add(pnlViewer);
@@ -294,6 +311,7 @@
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxImage).EndInit();
             pnlViewer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)webViewPdf).EndInit();
             pnlNav.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
@@ -318,5 +336,6 @@
         private Label lblLoc;
         private PictureBox pictureBoxImage;
         private TableLayoutPanel tableLayoutPanel2;
+        private Microsoft.Web.WebView2.WinForms.WebView2 webViewPdf;
     }
 }
