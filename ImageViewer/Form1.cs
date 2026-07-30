@@ -1,3 +1,5 @@
+using System.Drawing.Imaging;
+
 namespace ImageViewer
 {
     public partial class MainForm : Form
@@ -7,6 +9,10 @@ namespace ImageViewer
             InitializeComponent();
 
         }
+        private Image? currentTiff;
+
+        private int currentTiffPage = 0;
+        private int pageCount = 0;
         private List<ImageRecord> images = new();
 
         private int currentIndex = 0;
@@ -89,11 +95,14 @@ namespace ImageViewer
                 case ".png":
                 case ".bmp":
                 case ".gif":
+                    break;
                 case ".tif":
                 case ".tiff":
                     pictureBoxImage.Visible = true;
                     webViewPdf.Visible = false;
-
+                    lblTiffPage.Visible = false;
+                    btnPrevPag.Visible = false;
+                    btnNextPag.Visible = false;
                     try
                     {
                         // Dispose of the previous image
@@ -103,7 +112,20 @@ namespace ImageViewer
                             pictureBoxImage.Image = null;
                         }
 
-                        pictureBoxImage.Image = Image.FromFile(image.ImagePath);
+                        //pictureBoxImage.Image = Image.FromFile(image.ImagePath);
+                        currentTiff = Image.FromFile(image.ImagePath);
+
+                        FrameDimension dimension =
+                            new FrameDimension(currentTiff.FrameDimensionsList[0]);
+
+                        pageCount = currentTiff.GetFrameCount(dimension);
+
+                        currentTiff.SelectActiveFrame(dimension, 0);
+
+                        pictureBoxImage.Image = (Image)currentTiff.Clone();
+
+                        currentTiffPage = 0;
+                        lblTiffPage.Text = $"Page {currentTiffPage + 1} of {pageCount}";
                     }
                     catch (Exception ex)
                     {
@@ -147,19 +169,7 @@ namespace ImageViewer
             btnNext.Enabled = currentIndex < images.Count - 1;
         }
 
-        /* private void MainForm_Load(object sender, EventArgs e)
-         {
-             // images = imageService.LoadImages(@"C:\my-images");
 
-             //ShowImage();
-
-             images = databaseService.GetImages();
-
-             if (images.Count > 0)
-             {
-                 ShowImage();
-             }
-         }*/
         private async void MainForm_Load(object sender, EventArgs e)
         {
             images = databaseService.GetImages();
@@ -186,6 +196,62 @@ namespace ImageViewer
 
                 ShowImage();
             }
+        }
+
+        private void numlbl_Click(object sender, EventArgs e)
+        {
+            lblTiffPage.Text =
+             $"{currentTiffPage + 1} of {pageCount}";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (currentTiff == null)
+                return;
+
+            FrameDimension dimension =
+                new FrameDimension(currentTiff.FrameDimensionsList[0]);
+
+            if (currentTiffPage > 0)
+            {
+                currentTiffPage--;
+
+                currentTiff.SelectActiveFrame(dimension, currentTiffPage);
+
+                pictureBoxImage.Image?.Dispose();
+
+                pictureBoxImage.Image =
+                    (Image)currentTiff.Clone();
+                lblTiffPage.Text = $"Page {currentTiffPage + 1} of {pageCount}";
+            }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (currentTiff == null)
+                return;
+
+            FrameDimension dimension =
+                new FrameDimension(currentTiff.FrameDimensionsList[0]);
+
+            if (currentTiffPage < pageCount - 1)
+            {
+                currentTiffPage++;
+
+                currentTiff.SelectActiveFrame(dimension, currentTiffPage);
+
+                pictureBoxImage.Image?.Dispose();
+
+                pictureBoxImage.Image = (Image)currentTiff.Clone();
+
+                lblTiffPage.Text = $"Page {currentTiffPage + 1} of {pageCount}";
+            }
+        }
+
+        private void locationlbl_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
