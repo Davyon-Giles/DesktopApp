@@ -9,6 +9,12 @@ namespace ImageViewer
             InitializeComponent();
 
         }
+        private bool isFullScreen = false;
+
+        private FormBorderStyle previousBorderStyle;
+        private FormWindowState previousWindowState;
+        private Rectangle previousBounds;
+
         private Image? currentTiff;
 
         private int currentTiffPage = 0;
@@ -19,6 +25,42 @@ namespace ImageViewer
 
         //private readonly ImageService imageService = new();
         private readonly DatabaseService databaseService = new();
+        private void ToggleFullScreen()
+        {
+            if (!isFullScreen)
+            {
+                previousBorderStyle = this.FormBorderStyle;
+                previousWindowState = this.WindowState;
+                previousBounds = this.Bounds;
+
+                FormBorderStyle = FormBorderStyle.None;
+                WindowState = FormWindowState.Maximized;
+
+                pnlTitle.Visible = false;
+                pnlNav.Visible = false;
+                pnlInfo.Visible = false;
+
+                pictureBoxImage.Dock = DockStyle.Fill;
+                webViewPdf.Dock = DockStyle.Fill;
+
+                isFullScreen = true;
+            }
+            else
+            {
+                FormBorderStyle = previousBorderStyle;
+                WindowState = previousWindowState;
+                Bounds = previousBounds;
+
+                pnlTitle.Visible = true;
+                pnlNav.Visible = true;
+                pnlInfo.Visible = true;
+
+                pictureBoxImage.Dock = DockStyle.None;
+                webViewPdf.Dock = DockStyle.None;
+
+                isFullScreen = false;
+            }
+        }
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -68,7 +110,7 @@ namespace ImageViewer
             // Update footer information
             namelbl.Text = image.ImageName;
             locationlbl.Text = image.SubFolderPath;
-            lblPageCount.Text = $"{currentIndex + 1} of {images.Count}";
+            lblPageCount.Text = $"Record {currentIndex + 1} of {images.Count}";
 
             // Check if the file exists
             if (!File.Exists(image.ImagePath))
@@ -86,7 +128,12 @@ namespace ImageViewer
 
             // Determine the file type
             string extension = Path.GetExtension(image.ImagePath).ToLower();
+            currentTiff = Image.FromFile(image.ImagePath);
 
+            FrameDimension dimension =
+                new FrameDimension(currentTiff.FrameDimensionsList[0]);
+
+            pageCount = currentTiff.GetFrameCount(dimension);
             switch (extension)
             {
                 // Supported image formats
@@ -100,9 +147,11 @@ namespace ImageViewer
                 case ".tiff":
                     pictureBoxImage.Visible = true;
                     webViewPdf.Visible = false;
-                    lblTiffPage.Visible = false;
-                    btnPrevPag.Visible = false;
-                    btnNextPag.Visible = false;
+                    bool multiPage = pageCount > 1;
+
+                    lblPageCount2.Visible = true;
+                    btnPrevPag.Visible = multiPage;
+                    btnNextPag.Visible = multiPage;
                     try
                     {
                         // Dispose of the previous image
@@ -113,19 +162,11 @@ namespace ImageViewer
                         }
 
                         //pictureBoxImage.Image = Image.FromFile(image.ImagePath);
-                        currentTiff = Image.FromFile(image.ImagePath);
 
-                        FrameDimension dimension =
-                            new FrameDimension(currentTiff.FrameDimensionsList[0]);
-
-                        pageCount = currentTiff.GetFrameCount(dimension);
-
-                        currentTiff.SelectActiveFrame(dimension, 0);
-
-                        pictureBoxImage.Image = (Image)currentTiff.Clone();
-
+                        // MessageBox.Show($"This TIFF has {pageCount} page(s).");
                         currentTiffPage = 0;
-                        lblTiffPage.Text = $"Page {currentTiffPage + 1} of {pageCount}";
+                        ShowTiffPage();
+                        // lblPageCount2.Text = $"Page {currentTiffPage + 1} of {pageCount}";
                     }
                     catch (Exception ex)
                     {
@@ -200,11 +241,10 @@ namespace ImageViewer
 
         private void numlbl_Click(object sender, EventArgs e)
         {
-            lblTiffPage.Text =
-             $"{currentTiffPage + 1} of {pageCount}";
+            // lblPageCount2.Text =
+            //$"{currentTiffPage + 1} of {pageCount}";
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void ShowTiffPage()
         {
             if (currentTiff == null)
                 return;
@@ -212,45 +252,70 @@ namespace ImageViewer
             FrameDimension dimension =
                 new FrameDimension(currentTiff.FrameDimensionsList[0]);
 
-            if (currentTiffPage > 0)
-            {
-                currentTiffPage--;
+            currentTiff.SelectActiveFrame(dimension, currentTiffPage);
 
-                currentTiff.SelectActiveFrame(dimension, currentTiffPage);
+            pictureBoxImage.Image?.Dispose();
 
-                pictureBoxImage.Image?.Dispose();
+            pictureBoxImage.Image = (Image)currentTiff.Clone();
 
-                pictureBoxImage.Image =
-                    (Image)currentTiff.Clone();
-                lblTiffPage.Text = $"Page {currentTiffPage + 1} of {pageCount}";
-            }
+            lblPageCount2.Text = $" {currentIndex + 1} of {images.Count}";
+
+            lblTiffPage.Text = $"Page {currentTiffPage + 1} of {pageCount}";
+            lblTiffPage2.Text = $"Page {currentTiffPage + 1} of {pageCount}";
+
+            btnPrevPag.Enabled = currentTiffPage > 0;
+            btnNextPag.Enabled = currentTiffPage < pageCount - 1;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (currentTiff == null || currentTiffPage <= 0)
+                return;
+
+            currentTiffPage--;
+
+            ShowTiffPage();
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (currentTiff == null)
+            if (currentTiff == null || currentTiffPage >= pageCount - 1)
                 return;
 
-            FrameDimension dimension =
-                new FrameDimension(currentTiff.FrameDimensionsList[0]);
+            currentTiffPage++;
 
-            if (currentTiffPage < pageCount - 1)
-            {
-                currentTiffPage++;
-
-                currentTiff.SelectActiveFrame(dimension, currentTiffPage);
-
-                pictureBoxImage.Image?.Dispose();
-
-                pictureBoxImage.Image = (Image)currentTiff.Clone();
-
-                lblTiffPage.Text = $"Page {currentTiffPage + 1} of {pageCount}";
-            }
+            ShowTiffPage();
         }
 
         private void locationlbl_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void lblPagenum_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFullScreen_Click(object sender, EventArgs e)
+        {
+            ToggleFullScreen();
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.F11)
+            {
+                ToggleFullScreen();
+                return true;
+            }
+            if (keyData == Keys.Escape && isFullScreen)
+            {
+                ToggleFullScreen();
+                return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
 
         }
     }
