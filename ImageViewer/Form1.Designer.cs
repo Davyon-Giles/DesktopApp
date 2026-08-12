@@ -286,12 +286,14 @@
             // 
             // btnFullScreen
             // 
-            btnFullScreen.Location = new Point(795, 176);
+            btnFullScreen.BackColor = Color.FromArgb(51, 86, 128);
+            btnFullScreen.ForeColor = Color.LightYellow;
+            btnFullScreen.Location = new Point(761, 176);
             btnFullScreen.Name = "btnFullScreen";
-            btnFullScreen.Size = new Size(75, 23);
+            btnFullScreen.Size = new Size(109, 31);
             btnFullScreen.TabIndex = 7;
             btnFullScreen.Text = "⛶ Full Screen";
-            btnFullScreen.UseVisualStyleBackColor = true;
+            btnFullScreen.UseVisualStyleBackColor = false;
             btnFullScreen.Click += btnFullScreen_Click;
             // 
             // tableLayoutPanel3

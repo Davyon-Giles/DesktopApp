@@ -20,7 +20,9 @@ namespace ImageViewer
         private int currentTiffPage = 0;
         private int pageCount = 0;
         private List<ImageRecord> images = new();
+        private bool isImageFullScreen = false;
 
+        private Rectangle previousImageBounds;
         private int currentIndex = 0;
 
         //private readonly ImageService imageService = new();
@@ -42,7 +44,8 @@ namespace ImageViewer
 
                 pictureBoxImage.Dock = DockStyle.Fill;
                 webViewPdf.Dock = DockStyle.Fill;
-
+                btnFullScreen.Visible = false;
+                tableLayoutPanel3.Visible = false;
                 isFullScreen = true;
             }
             else
@@ -54,9 +57,12 @@ namespace ImageViewer
                 pnlTitle.Visible = true;
                 pnlNav.Visible = true;
                 pnlInfo.Visible = true;
-
+                btnFullScreen.Visible = true;
                 pictureBoxImage.Dock = DockStyle.None;
                 webViewPdf.Dock = DockStyle.None;
+
+                tableLayoutPanel3.Visible = true;
+               // isFullScreen = true;
 
                 isFullScreen = false;
             }
@@ -128,6 +134,7 @@ namespace ImageViewer
 
             // Determine the file type
             string extension = Path.GetExtension(image.ImagePath).ToLower();
+
             currentTiff = Image.FromFile(image.ImagePath);
 
             FrameDimension dimension =
@@ -209,6 +216,7 @@ namespace ImageViewer
             btnPrevious.Enabled = currentIndex > 0;
             btnNext.Enabled = currentIndex < images.Count - 1;
         }
+        
 
 
         private async void MainForm_Load(object sender, EventArgs e)
@@ -300,7 +308,7 @@ namespace ImageViewer
 
         private void btnFullScreen_Click(object sender, EventArgs e)
         {
-            ToggleFullScreen();
+             ToggleFullScreen();
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
