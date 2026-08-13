@@ -113,7 +113,6 @@ namespace ImageViewer
 
             ImageRecord image = images[currentIndex];
 
-            // Update footer information
             namelbl.Text = image.ImageName;
             locationlbl.Text = image.SubFolderPath;
             lblPageCount.Text = $"Record {currentIndex + 1} of {images.Count}";
