@@ -197,3 +197,39 @@
 2026-08-13 14:25:26.239: [INFO] BookmarksLoadDropped droppedNodes=0
 2026-08-13 14:25:26.239: [INFO] BookmarksSnapshot Startup total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
 2026-08-13 15:22:06.946: [INFO] BookmarksSnapshot Shutdown total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-08-14 18:09:18.217: [INFO] CurrentProfilePath: C:\Users\Davyon.Giles\Documents\GBI Documents\Web Devolper\DesktopApp\ImageViewer\bin\Debug\net8.0-windows\ImageViewer.exe.WebView2\EBWebView\Default
+2026-08-14 18:09:18.217: [INFO] Profiles total count: 1
+2026-08-14 18:09:18.217: [INFO] Profile: name=Profile 1 path=C:\Users\Davyon.Giles\Documents\GBI Documents\Web Devolper\DesktopApp\ImageViewer\bin\Debug\net8.0-windows\ImageViewer.exe.WebView2\EBWebView\Default lastActive=null
+2026-08-14 18:09:18.218: [INFO] LastUsedProfileDir: C:\Users\Davyon.Giles\Documents\GBI Documents\Web Devolper\DesktopApp\ImageViewer\bin\Debug\net8.0-windows\ImageViewer.exe.WebView2\EBWebView\Default
+2026-08-14 18:09:18.218: [INFO] OnDoneLoading sync enabled: 0
+2026-08-14 18:09:18.218: [INFO] BookmarkModelLoaded, ids_reassigned: 0
+2026-08-14 18:09:18.218: [INFO] BookmarksLoadDropped droppedNodes=0
+2026-08-14 18:09:18.218: [INFO] BookmarksSnapshot Startup total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-08-14 18:09:45.120: [INFO] BookmarksSnapshot Shutdown total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-08-15 01:04:57.280: [INFO] CurrentProfilePath: C:\Users\Davyon.Giles\Documents\GBI Documents\Web Devolper\DesktopApp\ImageViewer\bin\Debug\net8.0-windows\ImageViewer.exe.WebView2\EBWebView\Default
+2026-08-15 01:04:57.280: [INFO] Profiles total count: 1
+2026-08-15 01:04:57.280: [INFO] Profile: name=Profile 1 path=C:\Users\Davyon.Giles\Documents\GBI Documents\Web Devolper\DesktopApp\ImageViewer\bin\Debug\net8.0-windows\ImageViewer.exe.WebView2\EBWebView\Default lastActive=null
+2026-08-15 01:04:57.280: [INFO] LastUsedProfileDir: C:\Users\Davyon.Giles\Documents\GBI Documents\Web Devolper\DesktopApp\ImageViewer\bin\Debug\net8.0-windows\ImageViewer.exe.WebView2\EBWebView\Default
+2026-08-15 01:04:57.280: [INFO] OnDoneLoading sync enabled: 0
+2026-08-15 01:04:57.280: [INFO] BookmarkModelLoaded, ids_reassigned: 0
+2026-08-15 01:04:57.280: [INFO] BookmarksLoadDropped droppedNodes=0
+2026-08-15 01:04:57.280: [INFO] BookmarksSnapshot Startup total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-08-15 01:09:26.529: [INFO] BookmarksSnapshot Shutdown total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-08-21 14:13:37.939: [INFO] CurrentProfilePath: C:\Users\Davyon.Giles\Documents\GBI Documents\Web Devolper\DesktopApp\ImageViewer\bin\Debug\net8.0-windows\ImageViewer.exe.WebView2\EBWebView\Default
+2026-08-21 14:13:37.939: [INFO] Profiles total count: 1
+2026-08-21 14:13:37.939: [INFO] Profile: name=Profile 1 path=C:\Users\Davyon.Giles\Documents\GBI Documents\Web Devolper\DesktopApp\ImageViewer\bin\Debug\net8.0-windows\ImageViewer.exe.WebView2\EBWebView\Default lastActive=null
+2026-08-21 14:13:37.939: [INFO] LastUsedProfileDir: C:\Users\Davyon.Giles\Documents\GBI Documents\Web Devolper\DesktopApp\ImageViewer\bin\Debug\net8.0-windows\ImageViewer.exe.WebView2\EBWebView\Default
+2026-08-21 14:13:37.939: [INFO] OnDoneLoading sync enabled: 0
+2026-08-21 14:13:37.939: [INFO] BookmarkModelLoaded, ids_reassigned: 0
+2026-08-21 14:13:37.939: [INFO] BookmarksLoadDropped droppedNodes=0
+2026-08-21 14:13:37.939: [INFO] BookmarksSnapshot Startup total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-08-21 14:34:49.583: [INFO] BookmarksSnapshot Shutdown total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-08-21 17:17:22.394: [INFO] CurrentProfilePath: C:\Users\Davyon.Giles\Documents\GBI Documents\Web Devolper\DesktopApp\ImageViewer\bin\Debug\net8.0-windows\ImageViewer.exe.WebView2\EBWebView\Default
+2026-08-21 17:17:22.394: [INFO] Profiles total count: 1
+2026-08-21 17:17:22.394: [INFO] Profile: name=Profile 1 path=C:\Users\Davyon.Giles\Documents\GBI Documents\Web Devolper\DesktopApp\ImageViewer\bin\Debug\net8.0-windows\ImageViewer.exe.WebView2\EBWebView\Default lastActive=null
+2026-08-21 17:17:22.394: [INFO] LastUsedProfileDir: C:\Users\Davyon.Giles\Documents\GBI Documents\Web Devolper\DesktopApp\ImageViewer\bin\Debug\net8.0-windows\ImageViewer.exe.WebView2\EBWebView\Default
+2026-08-21 17:17:22.394: [INFO] OnDoneLoading sync enabled: 0
+2026-08-21 17:17:22.394: [INFO] BookmarkModelLoaded, ids_reassigned: 0
+2026-08-21 17:17:22.394: [INFO] BookmarksLoadDropped droppedNodes=0
+2026-08-21 17:17:22.394: [INFO] BookmarksSnapshot Startup total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-08-21 17:27:28.830: [INFO] BookmarksSnapshot Shutdown total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Davyon.Giles\\Documents\\Web Development\\Web Dev projects\\DesktopApp\\ImageViewer\\ImageViewer.csproj": {}
+    "C:\\Users\\Davyon.Giles\\Documents\\GBI Documents\\Web Devolper\\DesktopApp\\ImageViewer\\ImageViewer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Davyon.Giles\\Documents\\Web Development\\Web Dev projects\\DesktopApp\\ImageViewer\\ImageViewer.csproj": {
+    "C:\\Users\\Davyon.Giles\\Documents\\GBI Documents\\Web Devolper\\DesktopApp\\ImageViewer\\ImageViewer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Davyon.Giles\\Documents\\Web Development\\Web Dev projects\\DesktopApp\\ImageViewer\\ImageViewer.csproj",
+        "projectUniqueName": "C:\\Users\\Davyon.Giles\\Documents\\GBI Documents\\Web Devolper\\DesktopApp\\ImageViewer\\ImageViewer.csproj",
         "projectName": "ImageViewer",
-        "projectPath": "C:\\Users\\Davyon.Giles\\Documents\\Web Development\\Web Dev projects\\DesktopApp\\ImageViewer\\ImageViewer.csproj",
+        "projectPath": "C:\\Users\\Davyon.Giles\\Documents\\GBI Documents\\Web Devolper\\DesktopApp\\ImageViewer\\ImageViewer.csproj",
         "packagesPath": "C:\\Users\\Davyon.Giles\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Davyon.Giles\\Documents\\Web Development\\Web Dev projects\\DesktopApp\\ImageViewer\\obj\\",
+        "outputPath": "C:\\Users\\Davyon.Giles\\Documents\\GBI Documents\\Web Devolper\\DesktopApp\\ImageViewer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -78,7 +78,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.315/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.316/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

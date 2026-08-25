@@ -106,6 +106,115 @@ namespace ImageViewer
         {
 
         }
+        /*  private void ShowImage()
+          {
+              if (images.Count == 0)
+                  return;
+
+              ImageRecord image = images[currentIndex];
+
+              namelbl.Text = image.ImageName;
+              locationlbl.Text = image.SubFolderPath;
+              lblPageCount.Text = $"Record {currentIndex + 1} of {images.Count}";
+
+              // Check if the file exists
+              if (!File.Exists(image.ImagePath))
+              {
+                  pictureBoxImage.Image = null;
+
+                  MessageBox.Show(
+                      $"File not found:\n\n{image.ImagePath}",
+                      "Missing File",
+                      MessageBoxButtons.OK,
+                      MessageBoxIcon.Warning);
+
+                  return;
+              }
+
+              // Determine the file type
+              string extension = Path.GetExtension(image.ImagePath).ToLower();
+
+              currentTiff = Image.FromFile(image.ImagePath);
+
+              FrameDimension dimension =
+                  new FrameDimension(currentTiff.FrameDimensionsList[0]);
+
+              pageCount = currentTiff.GetFrameCount(dimension);
+              switch (extension)
+              {
+                  // Supported image formats
+                  case ".jpg":
+                  case ".jpeg":
+                  case ".png":
+                  case ".bmp":
+                  case ".gif":
+                      break;
+                  case ".tif":
+                  case ".tiff":
+                      pictureBoxImage.Visible = true;
+                      webViewPdf.Visible = false;
+                      bool multiPage = pageCount > 1;
+
+                      lblPageCount2.Visible = true;
+                      btnPrevPag.Visible = multiPage;
+                      btnNextPag.Visible = multiPage;
+                      try
+                      {
+                          // Dispose of the previous image
+                          if (pictureBoxImage.Image != null)
+                          {
+                              pictureBoxImage.Image.Dispose();
+                              pictureBoxImage.Image = null;
+                          }
+
+                          //pictureBoxImage.Image = Image.FromFile(image.ImagePath);
+
+                          // MessageBox.Show($"This TIFF has {pageCount} page(s).");
+                          currentTiffPage = 0;
+                          ShowTiffPage();
+                          // lblPageCount2.Text = $"Page {currentTiffPage + 1} of {pageCount}";
+                      }
+                      catch (Exception ex)
+                      {
+                          MessageBox.Show(
+                              $"Unable to load image:\n\n{image.ImagePath}\n\n{ex.Message}",
+                              "Image Load Error",
+                              MessageBoxButtons.OK,
+                              MessageBoxIcon.Error);
+
+                          pictureBoxImage.Image = null;
+                      }
+
+                      break;
+
+                  // PDF files
+                  case ".pdf":
+
+                      pictureBoxImage.Visible = false;
+                      webViewPdf.Visible = true;
+
+                      webViewPdf.Source = new Uri(image.ImagePath);
+
+                      break;
+
+                  // Unsupported file types
+                  default:
+
+                      pictureBoxImage.Image = null;
+
+                      MessageBox.Show(
+                          $"Unsupported file type:\n{extension}",
+                          "Unsupported File",
+                          MessageBoxButtons.OK,
+                          MessageBoxIcon.Information);
+
+                      break;
+              }
+
+              // Enable/Disable navigation buttons
+              btnPrevious.Enabled = currentIndex > 0;
+              btnNext.Enabled = currentIndex < images.Count - 1;
+          }*/
         private void ShowImage()
         {
             if (images.Count == 0)
@@ -131,76 +240,128 @@ namespace ImageViewer
                 return;
             }
 
-            // Determine the file type
-            string extension = Path.GetExtension(image.ImagePath).ToLower();
+            string extension = Path.GetExtension(image.ImagePath).ToLowerInvariant();
 
-            currentTiff = Image.FromFile(image.ImagePath);
-
-            FrameDimension dimension =
-                new FrameDimension(currentTiff.FrameDimensionsList[0]);
-
-            pageCount = currentTiff.GetFrameCount(dimension);
             switch (extension)
             {
-                // Supported image formats
+                // --------------------------------
+                // Standard image files
+                // --------------------------------
                 case ".jpg":
                 case ".jpeg":
                 case ".png":
                 case ".bmp":
                 case ".gif":
-                    break;
-                case ".tif":
-                case ".tiff":
+
                     pictureBoxImage.Visible = true;
                     webViewPdf.Visible = false;
-                    bool multiPage = pageCount > 1;
 
-                    lblPageCount2.Visible = true;
-                    btnPrevPag.Visible = multiPage;
-                    btnNextPag.Visible = multiPage;
                     try
                     {
-                        // Dispose of the previous image
                         if (pictureBoxImage.Image != null)
                         {
                             pictureBoxImage.Image.Dispose();
                             pictureBoxImage.Image = null;
                         }
 
-                        //pictureBoxImage.Image = Image.FromFile(image.ImagePath);
-
-                        // MessageBox.Show($"This TIFF has {pageCount} page(s).");
-                        currentTiffPage = 0;
-                        ShowTiffPage();
-                        // lblPageCount2.Text = $"Page {currentTiffPage + 1} of {pageCount}";
+                        pictureBoxImage.Image = Image.FromFile(image.ImagePath);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        MessageBox.Show(
-                            $"Unable to load image:\n\n{image.ImagePath}\n\n{ex.Message}",
-                            "Image Load Error",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-
                         pictureBoxImage.Image = null;
                     }
 
                     break;
 
+
+                // --------------------------------
+                // TIFF files
+                // --------------------------------
+                case ".tif":
+                case ".tiff":
+
+                    pictureBoxImage.Visible = true;
+                    webViewPdf.Visible = false;
+
+                    try
+                    {
+                        if (pictureBoxImage.Image != null)
+                        {
+                            pictureBoxImage.Image.Dispose();
+                            pictureBoxImage.Image = null;
+                        }
+
+                        // Load the TIFF
+                        currentTiff = Image.FromFile(image.ImagePath);
+
+                        FrameDimension dimension =
+                            new FrameDimension(
+                                currentTiff.FrameDimensionsList[0]);
+
+                        // Determine number of TIFF pages
+                        pageCount =
+                            currentTiff.GetFrameCount(dimension);
+
+                        currentTiffPage = 0;
+
+                        // Show/hide TIFF controls
+                        bool multiPage = pageCount > 1;
+
+                        lblPageCount2.Visible = true;
+                        btnPrevPag.Visible = multiPage;
+                        btnNextPag.Visible = multiPage;
+
+                        ShowTiffPage();
+                    }
+                    catch (Exception)
+                    {
+                        pictureBoxImage.Image = null;
+
+                        if (currentTiff != null)
+                        {
+                            currentTiff.Dispose();
+                            currentTiff = null;
+                        }
+
+                        pageCount = 0;
+                        currentTiffPage = 0;
+
+                        lblPageCount2.Visible = false;
+                        btnPrevPag.Visible = false;
+                        btnNextPag.Visible = false;
+                    }
+
+                    break;
+
+
+                // --------------------------------
                 // PDF files
+                // --------------------------------
                 case ".pdf":
 
                     pictureBoxImage.Visible = false;
                     webViewPdf.Visible = true;
 
+                    lblPageCount2.Visible = false;
+                    btnPrevPag.Visible = false;
+                    btnNextPag.Visible = false;
+
                     webViewPdf.Source = new Uri(image.ImagePath);
 
                     break;
 
-                // Unsupported file types
+
+                // --------------------------------
+                // Unsupported files
+                // --------------------------------
                 default:
 
                     pictureBoxImage.Image = null;
+                    webViewPdf.Visible = false;
+
+                    lblPageCount2.Visible = false;
+                    btnPrevPag.Visible = false;
+                    btnNextPag.Visible = false;
 
                     MessageBox.Show(
                         $"Unsupported file type:\n{extension}",
@@ -211,11 +372,10 @@ namespace ImageViewer
                     break;
             }
 
-            // Enable/Disable navigation buttons
+            // Record navigation
             btnPrevious.Enabled = currentIndex > 0;
             btnNext.Enabled = currentIndex < images.Count - 1;
         }
-        
 
 
         private async void MainForm_Load(object sender, EventArgs e)
