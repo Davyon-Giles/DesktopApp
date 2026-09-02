@@ -7,7 +7,7 @@ namespace ImageViewer
         public MainForm()
         {
             InitializeComponent();
-
+            webViewPdf.KeyDown += WebViewPdf_KeyDown;
         }
         private bool isFullScreen = false;
 
@@ -71,6 +71,16 @@ namespace ImageViewer
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+        private void WebViewPdf_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape && isFullScreen)
+            {
+                ToggleFullScreen();
+
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
